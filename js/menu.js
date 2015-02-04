@@ -12,6 +12,11 @@ $(document).on("pagebeforeshow","#demo-page",function(){ // When entering pagetw
 
 $(document).ready(function(){
     
+    var sesid=$.session.get('id');
+    var usernya=$.session.get('user');
+    
+    $('#usermasuk').html(sesid+"<br>"+usernya);
+    
        otentifikasi();
 
     $( "#left-panel" ).panel( "open" );
@@ -27,6 +32,12 @@ $(document).ready(function(){
     document.addEventListener("backbutton", function(e){
            $( "#left-panel" ).panel( "open" );
     }, false);
+    
+    $('#logout').click(function(){
+        $.session.clear();
+        window.location.replace('index.html?id='+sesid);
+    });
+    
 });
 
 function otentifikasi(){   

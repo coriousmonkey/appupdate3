@@ -14,23 +14,24 @@
 $(document).ready(function(){
 //alert(hostnya);
 
-document.addEventListener("backbutton", function(e){
-        var r = confirm("Do you want to close ?");
-        if (r == true) {
-            navigator.app.exitApp();
-        } else {
-            
-        }       
-    }, false);
+    document.addEventListener("backbutton", function(e){
+            var r = confirm("Do you want to close ?");
+            if (r == true) {
+                navigator.app.exitApp();
+            } else {
+                
+            }       
+        }, false);
+    
+    $("#nama").enterKey(function () {
+        $("#pass").focus();
+    });
+    
+    $("#pass").enterKey(function () {
+        loaddata();
+    });
 
-$("#nama").enterKey(function () {
-    $("#pass").focus();
-});
-
-$("#pass").enterKey(function () {
-    loaddata();
-});
-
+    clearhistory(getUrlParameter('id'));
 
 });
 
@@ -87,6 +88,36 @@ function loaddata(){
                 });
         }
     });
+}
+
+function clearhistory(idne){
+    $.ajax({
+        type: "POST",
+        url: hostnya+"clear_register_penjualan.php?id="+idne,
+        crossDomain: true,
+        data: '',
+        timeout: 25000,
+        success: function (data) {
+            //alert('clear history finished');
+        },
+        error: function (err) {
+            alert('clear history failed');
+        }
+    });
+}
+
+function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
 }
 </script>
 

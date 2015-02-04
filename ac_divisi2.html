@@ -85,6 +85,12 @@ $(document).ready(function() {
         $('label').addClass('sembunyi2');
     });
     
+    $('#logout').click(function(){
+        $.session.clear();
+        window.location.replace('index.html?id='+idnya);
+    });
+    
+    
 });
 
 $(document).on("pagebeforeshow","#pageone",function(){ // When entering pagetwo
@@ -127,9 +133,9 @@ function jqUpdateSize(){
         
         var r = confirm("Silakan aktifkan rotasi layar!\natau anda bisa menggunakan\nperangkat dengan layar\nlebih dari 400px");
         if (r == true) {
-            location.reload();
+            //
         } else {
-            location.reload();
+            //
         } 
         
     }
@@ -312,7 +318,7 @@ function rbh_bulan(nomerbulan){
             <br />
         <button onClick="window.location.replace('ac_ddivisi2.html');" data-role="button" data-mini="true" data-inline="true" data-icon="carat-l" data-iconpos="right" data-theme="e">Back</button>
             <br />
-        <button onClick="$.session.clear();window.location.replace('index.html');" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-theme="e" >Logout</button>
+        <button id="logout" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-theme="e" >Logout</button>
       
       
     </div>
