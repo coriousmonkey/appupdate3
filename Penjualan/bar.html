@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Bar Chart</title>
+        <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+        
+        <link rel="stylesheet" type="text/css" href="font-awesome-4.3.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="datatables/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="datatables/dataTables.fixedColumns.css">
+		<style>
+        th, td { white-space: nowrap; }
+		
+        ul {
+        list-style: none;
+        }
+        ul li {
+          display: block;
+          padding-left: 30px;
+          position: relative;
+          margin-bottom: 4px;
+          border-radius: 5px;
+          padding: 2px 8px 2px 28px;
+          font-size: 14px;
+          cursor: default;
+          -webkit-transition: background-color 200ms ease-in-out;
+          -moz-transition: background-color 200ms ease-in-out;
+          -o-transition: background-color 200ms ease-in-out;
+          transition: background-color 200ms ease-in-out;
+        }
+        li span {
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 20px;
+          height: 100%;
+          border-radius: 5px;
+        }
+        #chart-area > *{
+          float:left
+            }
+		#legend{
+			width: 80%;
+			padding: 5px;
+			border: 2px solid #95a5a6;
+			margin: 2px;
+		}
+        .sembunyi2{
+                visibility: hidden;
+            }
+            
+        .sembunyi {
+            display:none;
+        }
+                    
+        </style>
+        
+		<script src="Chart.js"></script>
+        <script src="jquery.js"></script>
+        <script type="text/javascript" language="javascript" src="datatables/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="datatables/dataTables.fixedColumns.js"></script>
+        
+        <script>
+	
+	//window.onload = function(){
+		
+	//}
+    $(document). ready(function(){
+       
+        
+        var mybulan=[];
+        
+        $.ajax({
+            type: "GET",
+            url: "http://semeru.dnset.com/mobile/omset-penjualan=profit/penjualan_array.php",
+            crossDomain: true,
+            data: '',
+            timeout: 25000,
+            success: function (data) {
+                    var mydata=jQuery.parseJSON(data);
+                    
+                    $('#array').val(mydata[0][0]);
+                    
+                    $('#textarea').val(data);
+                    
+                        
+                        //var mstring="[['January','February'],['21991648812.425','6114688150.5'],['16725452894.270008','4500276638.200003'],['5266195918.155005','1614411512.299998']]";
+                        //var myarr=jQuery.parseJSON(mstring);
+                        
+                        var helpers = Chart.helpers;
+                        var canvas = document.getElementById('bar');
+                        
+                        
+                        var bulan=mydata[0];
+                        var data1=mydata[1];
+                        var data2=mydata[2];
+                        var data3=mydata[3];
+                    
+                    	var barChartData = {
+                    		labels : bulan,
+                    		datasets : [//rgba(26, 188, 156,1.0)
+                    			{
+      			                   label: "a",
+                    				fillColor : "rgba(149, 165, 166,1.0)",
+                    				strokeColor : "rgba(149, 165, 166,1.0)",
+                    				highlightFill: "rgba(149, 165, 166,1.0)",
+                    				highlightStroke: "rgba(149, 165, 166,1.0)",
+                    				data : data1
+                    			},
+                    			{
+                    			     label: "b",
+                    				fillColor : "rgba(46, 204, 113,1.0)",
+                    				strokeColor : "rgba(46, 204, 113,1.0)",
+                    				highlightFill : "rgba(46, 204, 113,1.0)",
+                    				highlightStroke : "rgba(46, 204, 113,1.0)",
+                    				data : data2
+                    			},
+                                {
+                                    label: "c",
+                    				fillColor : "rgba(52, 152, 219,1.0)",
+                    				strokeColor : "rgba(52, 152, 219,1.0)",
+                    				highlightFill : "rgba(52, 152, 219,1.0)",
+                    				highlightStroke : "rgba(52, 152, 219,1.0)",
+                    				data : data3
+                    			}
+                                
+                    		]
+                    
+                    	}
+                            
+                            var ctx = document.getElementById("canvas").getContext("2d");
+                    		window.myBar = new Chart(ctx).Bar(barChartData, {
+                    			responsive : true,
+                                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"  
+                                
+                    		});
+                            
+                            panggil();
+                },
+            error: function (err) {
+                alert("koneksi gagal"+err);
+                //$.mobile.loading( "hide" );
+                }
+        });
+        
+     //alert($(window).width());
+    });///ojo 
+
+function panggil(){
+    $.ajax({
+            type: "GET",
+            url: "http://semeru.dnset.com/mobile/omset-penjualan=profit/penjualan.php",
+            crossDomain: true,
+            data: '',
+            timeout: 25000,
+            success: function (data) {
+                    $('#tabel').html(data);   
+                    add();
+                    update(); 
+                    $('label').addClass('sembunyi2');
+                },
+            error: function (err) {
+                alert("koneksi gagal"+err);
+                
+                }
+        });
+}
+
+function add(){
+    $("table").attr("cellspacing","0");
+    $("table").attr("width","100%");
+    $("table").addClass("cell-border");
+    //cellspacing="0" width="100%"
+}
+
+function update(){
+    var heightnya = "300px";
+    
+    /*var table = $('#example').DataTable( {
+		"scrollY":        heightnya+"px",
+        "scrollCollapse": true,
+        "paging":         false,
+        "order": [[ 0, "asc" ]]
+	});*/
+    
+    var table = $('table').DataTable( {
+		scrollY:        heightnya+"px",
+		scrollX:        true,
+		scrollCollapse: true,
+		paging:         false
+	} );
+	new $.fn.dataTable.FixedColumns( table, {
+		leftColumns: 1
+	});
+}
+
+
+	</script>
+	</head>
+	<body style="font-family: sans-serif;">
+    
+    <strong>
+    <a href="../menu.html" style="color: black;" >Kembali</a>
+    </strong>
+    
+        <center>
+		<div >
+			<canvas id="canvas" style="width: 100%; height: 40%;" width="100%" height="40%"></canvas>
+            
+            <div id="legend">
+            	<strong>
+                <i class="fa fa-square" style="color:rgba(149, 165, 166,1.0);"></i>Sales
+           
+                <i class="fa fa-square" style="color:#2ecc71"></i>Cogs
+                
+                <i class="fa fa-square" style="color:#409edd"></i>Profit
+
+                
+                </strong>
+            </div>
+		
+        </div>
+        <div id="tabel">
+        
+        </div>
+        </center>
+	</body>
+</html>

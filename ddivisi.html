@@ -29,9 +29,7 @@ $(document).ready(function() {
         }
     });
     
-    var tanggal = new Date();
-    var taun = tanggal.getFullYear();
-    $('#Tahun').val(taun);
+    $('#Tahun').val(tanggal_hari_ini());
     
     $('#loaddata').click(function(){
         var tahun=$('#Tahun').val();
@@ -46,6 +44,12 @@ $(document).ready(function() {
     });
     
 });
+
+function tanggal_hari_ini(){
+    var d = new Date();
+    var n = d.getFullYear();
+    return n;
+}
 </script>
 <style>
 /* Manually hidden */ 

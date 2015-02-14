@@ -18,7 +18,14 @@
 		
 		<li class="ui-first-child ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" onclick="window.location.replace('ac_dkategori.html')">Kategory</a></li>			
       		<li class="ui-first-child ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" onclick="window.location.replace('ac_dyc.html')">Yuchai</a></li>			
-      
+		</ul>
+
+            </div>
+
+<div data-role="collapsible" data-theme="e">
+                 <h3>Penjualan</h3>
+          	<ul class="ui-listview ui-group-theme-c" data-role="listview" data-theme="c" id="link1">      
+		<li class="ui-first-child ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" onclick="window.location.replace('Penjualan/bar.html')">Penjualan Perbulan</a></li>			
 		</ul>
 
             </div>
