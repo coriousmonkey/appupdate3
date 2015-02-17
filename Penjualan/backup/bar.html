@@ -74,7 +74,7 @@
         
         $.ajax({
             type: "GET",
-            url: "http://semeru.dnset.com/mobile/omset-penjualan=profit/penjualan_array.php",
+            url: "http://192.168.1.4/mobile/fixedcolserver/omset-penjualan=profit/penjualan_array.php",
             crossDomain: true,
             data: '',
             timeout: 25000,
@@ -151,7 +151,7 @@
 function panggil(){
     $.ajax({
             type: "GET",
-            url: "http://semeru.dnset.com/mobile/omset-penjualan=profit/penjualan.php",
+            url: "http://192.168.1.4/mobile/fixedcolserver/omset-penjualan=profit/penjualan.php",
             crossDomain: true,
             data: '',
             timeout: 25000,
@@ -200,11 +200,6 @@ function update(){
 	</script>
 	</head>
 	<body style="font-family: sans-serif;">
-    
-    <strong>
-    <a href="../menu.html" style="color: black;" >Kembali</a>
-    </strong>
-    
         <center>
 		<div >
 			<canvas id="canvas" style="width: 100%; height: 40%;" width="100%" height="40%"></canvas>

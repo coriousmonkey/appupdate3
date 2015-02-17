@@ -6,6 +6,7 @@ $(document).on("pagebeforeshow","#demo-page",function(){ // When entering pagetw
         $('#menu').collapsibleset('refresh');
         $('ul').listview( "refresh" );
     }, 'text'); 
+    //$( "#left-panel" ).panel( "open" );
 });
 
 //data-collapsed='false'
@@ -15,7 +16,8 @@ $(document).ready(function(){
     var sesid=$.session.get('id');
     var usernya=$.session.get('user');
     
-    $('#usermasuk').html(sesid+"<br>"+usernya);
+    //alert(usernya);
+    //$('#usermasuk').html(sesid+"<br>"+usernya);
     
        otentifikasi();
 
