@@ -73,7 +73,11 @@
 	   <script type="text/javascript" language="javascript" class="init">
 
     $(document). ready(function(){
+<<<<<<< HEAD
         //updatezise();
+=======
+        updatezise();
+>>>>>>> origin/master
         
         $.get('swipe.txt', function(data) {
             $("#menu").html(data);
@@ -97,7 +101,13 @@
     });
 
 $( window ).resize(function() {
+<<<<<<< HEAD
         //updatezise();
+=======
+        setInterval(function(){
+            location.reload(); 
+        }, 5000);
+>>>>>>> origin/master
 });
     
 
@@ -105,11 +115,20 @@ function updatezise(){
     var ex=$(window).width();
     var ye=$(window).height();
     if(ex<ye){
+<<<<<<< HEAD
         $('#container').attr('style','width:95%;padding:10px;');
     }
     else if(ex>=ye){
        
         $('#container').attr('style','width:50%;padding:10px;');
+=======
+        $('#canvas').attr('style','width: 100%; height: 50%;');
+        $('#canvas').attr('height','50%');
+    }
+    else if(ex>=ye){
+        $('#canvas').attr('style','width: 100%; height: 20%;');
+        $('#canvas').attr('height','20%');
+>>>>>>> origin/master
     }
 }
     
@@ -243,7 +262,11 @@ function update(){
      
         <div data-role="main" class="ui-content" style="background-color: white;">
                         <center>
+<<<<<<< HEAD
                             <div id="container">
+=======
+                            <div id="container" style="width:95%;padding:10px;">
+>>>>>>> origin/master
                     			<canvas id="canvas" style="width: 100%; height: 50%;" width="100%" height="50%" >
                                 </canvas>
                                 
