@@ -73,8 +73,17 @@
 	   <script type="text/javascript" language="javascript" class="init">
 
     $(document). ready(function(){
+<<<<<<< HEAD
         //updatezise();
         /*
+=======
+<<<<<<< HEAD
+        //updatezise();
+=======
+        updatezise();
+>>>>>>> origin/master
+        
+>>>>>>> origin/master
         $.get('swipe.txt', function(data) {
             $("#menu").html(data);
             $('#menu').collapsibleset('refresh');
@@ -98,7 +107,17 @@
     });
 
 $( window ).resize(function() {
+<<<<<<< HEAD
         //updatezise();
+=======
+<<<<<<< HEAD
+        //updatezise();
+=======
+        setInterval(function(){
+            location.reload(); 
+        }, 5000);
+>>>>>>> origin/master
+>>>>>>> origin/master
 });
     
 
@@ -106,11 +125,26 @@ function updatezise(){
     var ex=$(window).width();
     var ye=$(window).height();
     if(ex<ye){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         $('#container').attr('style','width:95%;padding:10px;');
     }
     else if(ex>=ye){
        
         $('#container').attr('style','width:50%;padding:10px;');
+<<<<<<< HEAD
+=======
+=======
+        $('#canvas').attr('style','width: 100%; height: 50%;');
+        $('#canvas').attr('height','50%');
+    }
+    else if(ex>=ye){
+        $('#canvas').attr('style','width: 100%; height: 20%;');
+        $('#canvas').attr('height','20%');
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 }
     
@@ -233,6 +267,7 @@ function update(){
             </div>
             <a href="#left-panel" data-theme="e" data-icon="flat-menu" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open left panel</a>
     
+<<<<<<< HEAD
         </div>
 
         <div data-role="content">
@@ -257,6 +292,38 @@ function update(){
         </div>
         
     <div data-role="panel" id="left-panel" data-theme="c" style="background-color: white;" >
+=======
+        
+     
+        <div data-role="main" class="ui-content" style="background-color: white;">
+                        <center>
+<<<<<<< HEAD
+                            <div id="container">
+=======
+                            <div id="container" style="width:95%;padding:10px;">
+>>>>>>> origin/master
+                    			<canvas id="canvas" style="width: 100%; height: 50%;" width="100%" height="50%" >
+                                </canvas>
+                                
+                                <div id="legend">
+                                	<strong>
+                                    <i class="fa fa-square" style="color:rgba(149, 165, 166,1.0);"></i>Sales
+                                    <i class="fa fa-square" style="color:#2ecc71"></i>Cogs
+                                    <i class="fa fa-square" style="color:#409edd"></i>Profit
+                                    </strong>
+                                </div>
+                            </div>
+                        
+                            <div id="tabel" >
+                            </div>
+                        </center> 
+                        <br />           
+            <div class="modal"></div>
+        </div>
+        
+        
+        <div data-role="panel" id="left-panel" data-theme="c" style="background-color: white;" >
+>>>>>>> origin/master
             <br />
      <div data-role="collapsible-set" data-theme="a" id="menu">
         
